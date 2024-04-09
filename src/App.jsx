@@ -16,13 +16,13 @@ function App() {
         currentPlayer = 'O';
       }
 
-      const updateTurns = [
-        { square: { row: rowIndex, col: colIndex }, player: activePlayer },
+      const updatedTurns = [
+        { square: { row: rowIndex, col: colIndex }, player: currentPlayer },
         ...prevTurns,
       ];
+      return updatedTurns;
     });
 
-    return updateTurns;
   }
 
   return (
@@ -43,10 +43,10 @@ function App() {
         </ol>
         <GameBoard
           onSelectSquare={handleSelectSquare}
-          activePlayerSymbol={activePlayer}
+          turns={gameTurns}
         />
       </div>
-      <Log />
+      <Log turns={gameTurns} />
     </main>
   );
 }

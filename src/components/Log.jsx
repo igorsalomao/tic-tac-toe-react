@@ -1,16 +1,5 @@
-export default function Log() {
+export default function Log({ turns }) {
   return <ol id="log">
-    
+    {turns.map(turn => <li key={`${turn.square.row}${turn.square.col}`}>{turn.player} selected {turn.square.row},{turn.square.col}</li>)}
   </ol>
 }
-
-const [gameBoard, setGameBoard] = useState(initialGameBoard);
-
-function handleSelectSquare(rowIndex, colIndex) {
-  setGameBoard((prevGameBoard) => {
-    const updateBoard = [
-      ...prevGameBoard.map((innerArray) => [...innerArray]),
-    ];
-    updateBoard[rowIndex][colIndex] = activePlayerSymbol;
-    return updateBoard;
-  });
